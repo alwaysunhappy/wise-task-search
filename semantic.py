@@ -2,7 +2,7 @@ import functools
 import os
 from pathlib import Path
 from typing import List
-
+import torch
 import numpy as np
 from sentence_transformers import SentenceTransformer
 
@@ -27,7 +27,8 @@ def _resolve_model_path() -> str:
 @functools.lru_cache(maxsize=1)
 def _load_model() -> SentenceTransformer:
     model_id = _resolve_model_path()
-    return SentenceTransformer(model_id)
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    return SentenceTransformer(model_id, device=device)
 
 
 def warmup_model() -> SentenceTransformer:
