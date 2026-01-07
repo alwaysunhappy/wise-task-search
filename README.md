@@ -16,6 +16,7 @@ API принимает сущности (tasks/plugins), строит для н�
 Собрать образ и запустить контейнер:
 
 ```bash
+cd wise-task-search
 docker build -t semantic-search-api .
 docker run --rm -p 8001:8001 semantic-search-api
 ```
