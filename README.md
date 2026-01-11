@@ -17,7 +17,7 @@ API принимает сущности (tasks/plugins), строит для н�
 
 ```bash
 cd wise-task-search
-docker build -t semantic-search-api .
+docker buildx build --platform linux/amd64 -t wise-task-search .
 docker run -d --name wise-task-search --gpus all -p 8001:8001 semantic-search-api
 ```
 
